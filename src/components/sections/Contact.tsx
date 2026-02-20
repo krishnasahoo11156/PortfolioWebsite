@@ -3,7 +3,7 @@
 const socials = [
     {
         name: "GitHub",
-        url: "https://github.com/krishna",
+        url: "https://github.com/krishnasahoo11156",
         color: "#F0F0F5",
         icon: (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -13,7 +13,7 @@ const socials = [
     },
     {
         name: "LinkedIn",
-        url: "https://linkedin.com/in/krishna",
+        url: "https://www.linkedin.com/in/krishna-sahoo-b3440537a/",
         color: "#3B82F6",
         icon: (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -22,8 +22,28 @@ const socials = [
         ),
     },
     {
+        name: "Credly",
+        url: "https://www.credly.com/users/krishna-sahoo.778cc76d",
+        color: "#FF6F00",
+        icon: (
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3 6 6 .9-4.5 4.4 1.1 6.3L12 17.8 6.4 19.6 7.5 13 3 8.9l6-.9 3-6z" />
+            </svg>
+        ),
+    },
+    {
+        name: "Instagram",
+        url: "https://www.instagram.com/krishnasahoo11156/",
+        color: "#FF006E",
+        icon: (
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3.5A5.5 5.5 0 1112 18.5 5.5 5.5 0 0112 7.5zm0 2A3.5 3.5 0 1015.5 13 3.5 3.5 0 0012 9.5zm5.25-2.75a1 1 0 11-1 1 1 1 0 011-1z" />
+            </svg>
+        ),
+    },
+    {
         name: "Email",
-        url: "mailto:krishna@example.com",
+        url: "mailto:krishnasahoo11156@gmail.com",
         color: "#00E5FF",
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -97,64 +117,97 @@ export default function Contact() {
                                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
                             }}
                             onClick={() => {
-                                navigator.clipboard.writeText("krishna@example.com");
+                                navigator.clipboard.writeText("krishnasahoo11156@gmail.com");
                             }}
                         >
                             <span className="text-text-secondary text-sm">
-                                krishna@example.com
+                                krishnasahoo11156@gmail.com
                             </span>
                             <span className="text-text-muted text-xs ml-3">click to copy</span>
                         </div>
                     </div>
 
                     {/* Right — Contact form */}
-                    <div className="neon-card">
-                        <div className="p-8 lg:p-10 space-y-7">
-                            <div>
-                                <label className="label-muted text-xs block mb-2.5">Name</label>
-                                <input
-                                    type="text"
-                                    placeholder="Your name"
-                                    className="w-full px-4 py-3.5 rounded-lg text-sm text-text-primary placeholder-text-muted outline-none border transition-all duration-300"
-                                    style={{
-                                        background: "var(--color-bg-tertiary)",
-                                        borderColor: "var(--color-border)",
-                                    }}
-                                    onFocus={(e) => {
-                                        e.currentTarget.style.borderColor = "rgba(0,229,255,0.4)";
-                                        e.currentTarget.style.boxShadow = "0 0 16px rgba(0,229,255,0.06)";
-                                    }}
-                                    onBlur={(e) => {
-                                        e.currentTarget.style.borderColor = "var(--color-border)";
-                                        e.currentTarget.style.boxShadow = "none";
-                                    }}
-                                />
+                    <div
+                        className="neon-card relative overflow-hidden"
+                        style={{
+                            background:
+                                "radial-gradient(circle at top left, rgba(0,229,255,0.16), transparent 55%)",
+                        }}
+                    >
+                        <div className="absolute inset-0 pointer-events-none opacity-40">
+                            <div className="absolute -top-24 right-10 w-56 h-56 rounded-full blur-3xl bg-accent-purple/40" />
+                        </div>
+                        <div className="relative p-8 lg:p-10 space-y-7">
+                            <div className="flex items-center justify-between gap-4 mb-2">
+                                <div>
+                                    <p className="text-[11px] uppercase tracking-[0.25em] text-text-muted">
+                                        Send a message
+                                    </p>
+                                    <p className="text-sm text-text-secondary mt-1">
+                                        Share a project idea, opportunity, or just say hi.
+                                    </p>
+                                </div>
+                                <div className="hidden sm:flex items-center gap-2 text-[11px] font-medium text-text-muted">
+                                    <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                                    <span>Typically replies within 24 hours</span>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="label-muted text-[11px] block mb-2.5">
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Your name"
+                                        className="w-full px-4 py-3.5 rounded-lg text-sm text-text-primary placeholder-text-muted outline-none border transition-all duration-300"
+                                        style={{
+                                            background: "var(--color-bg-tertiary)",
+                                            borderColor: "var(--color-border)",
+                                        }}
+                                        onFocus={(e) => {
+                                            e.currentTarget.style.borderColor = "rgba(0,229,255,0.4)";
+                                            e.currentTarget.style.boxShadow =
+                                                "0 0 16px rgba(0,229,255,0.06)";
+                                        }}
+                                        onBlur={(e) => {
+                                            e.currentTarget.style.borderColor = "var(--color-border)";
+                                            e.currentTarget.style.boxShadow = "none";
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="label-muted text-[11px] block mb-2.5">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        placeholder="you@example.com"
+                                        className="w-full px-4 py-3.5 rounded-lg text-sm text-text-primary placeholder-text-muted outline-none border transition-all duration-300"
+                                        style={{
+                                            background: "var(--color-bg-tertiary)",
+                                            borderColor: "var(--color-border)",
+                                        }}
+                                        onFocus={(e) => {
+                                            e.currentTarget.style.borderColor = "rgba(0,229,255,0.4)";
+                                            e.currentTarget.style.boxShadow =
+                                                "0 0 16px rgba(0,229,255,0.06)";
+                                        }}
+                                        onBlur={(e) => {
+                                            e.currentTarget.style.borderColor = "var(--color-border)";
+                                            e.currentTarget.style.boxShadow = "none";
+                                        }}
+                                    />
+                                </div>
                             </div>
                             <div>
-                                <label className="label-muted text-xs block mb-2.5">Email</label>
-                                <input
-                                    type="email"
-                                    placeholder="your@email.com"
-                                    className="w-full px-4 py-3.5 rounded-lg text-sm text-text-primary placeholder-text-muted outline-none border transition-all duration-300"
-                                    style={{
-                                        background: "var(--color-bg-tertiary)",
-                                        borderColor: "var(--color-border)",
-                                    }}
-                                    onFocus={(e) => {
-                                        e.currentTarget.style.borderColor = "rgba(0,229,255,0.4)";
-                                        e.currentTarget.style.boxShadow = "0 0 16px rgba(0,229,255,0.06)";
-                                    }}
-                                    onBlur={(e) => {
-                                        e.currentTarget.style.borderColor = "var(--color-border)";
-                                        e.currentTarget.style.boxShadow = "none";
-                                    }}
-                                />
-                            </div>
-                            <div>
-                                <label className="label-muted text-xs block mb-2.5">Message</label>
+                                <label className="label-muted text-[11px] block mb-2.5">
+                                    Message
+                                </label>
                                 <textarea
                                     rows={5}
-                                    placeholder="What would you like to discuss?"
+                                    placeholder="Tell me a bit about what you have in mind..."
                                     className="w-full px-4 py-3.5 rounded-lg text-sm text-text-primary placeholder-text-muted outline-none border transition-all duration-300 resize-none"
                                     style={{
                                         background: "var(--color-bg-tertiary)",
@@ -162,7 +215,8 @@ export default function Contact() {
                                     }}
                                     onFocus={(e) => {
                                         e.currentTarget.style.borderColor = "rgba(0,229,255,0.4)";
-                                        e.currentTarget.style.boxShadow = "0 0 16px rgba(0,229,255,0.06)";
+                                        e.currentTarget.style.boxShadow =
+                                            "0 0 16px rgba(0,229,255,0.06)";
                                     }}
                                     onBlur={(e) => {
                                         e.currentTarget.style.borderColor = "var(--color-border)";
@@ -170,9 +224,14 @@ export default function Contact() {
                                     }}
                                 />
                             </div>
-                            <button className="btn-neon w-full justify-center py-4 text-base mt-2">
-                                Send Message
-                            </button>
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2">
+                                <p className="text-xs text-text-muted">
+                                    No spam, no sharing your details — just a direct reply from me.
+                                </p>
+                                <button className="btn-neon w-full sm:w-auto justify-center px-10 py-3.5 text-sm">
+                                    Send Message
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -117,9 +117,7 @@ export default function Achievements() {
                                 key={achievement.id}
                                 className="achievement-card neon-card flex-shrink-0 w-[320px] lg:w-[360px] group cursor-default"
                             >
-                                {/* Card inner container with proper padding */}
-                                <div className="p-7 pb-10 relative h-full">
-                                    {/* Icon */}
+                                <div className="p-8 h-full flex flex-col">
                                     <div
                                         className="mb-5 transition-transform duration-300 group-hover:scale-110"
                                         style={{ color }}
@@ -127,7 +125,7 @@ export default function Achievements() {
                                         {iconSVGs[achievement.icon] || iconSVGs.star}
                                     </div>
 
-                                    <span className="label-muted text-[11px] block mb-2">
+                                    <span className="label-muted text-[11px] mb-2">
                                         {achievement.category}
                                     </span>
 
@@ -135,17 +133,15 @@ export default function Achievements() {
                                         {achievement.title}
                                     </h3>
 
-                                    <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                                    <p className="text-sm text-text-secondary leading-relaxed">
                                         {achievement.description}
                                     </p>
 
-                                    {/* Date at bottom, properly spaced */}
-                                    <span
-                                        className="absolute bottom-6 right-7 text-xs font-medium"
-                                        style={{ color }}
-                                    >
-                                        {achievement.date}
-                                    </span>
+                                    <div className="mt-auto pt-5 border-t border-white/10">
+                                        <span className="text-xs font-medium" style={{ color }}>
+                                            {achievement.date}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         );

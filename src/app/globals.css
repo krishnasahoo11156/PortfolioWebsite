@@ -40,8 +40,8 @@
   --font-mono: var(--font-jetbrains);
 
   /* ── Spacing ────────────────────────────────────────────── */
-  --spacing-section-y: 8rem;
-  --spacing-section-y-mobile: 4rem;
+  --spacing-section-y: 10rem;
+  --spacing-section-y-mobile: 6rem;
 }
 
 /* ── Root Variables (non-Tailwind) ────────────────────────── */
@@ -144,6 +144,7 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
+  padding: 1.5rem;
   transition:
     border-color var(--transition-base) ease,
     transform var(--transition-base) cubic-bezier(0.22, 1, 0.36, 1),

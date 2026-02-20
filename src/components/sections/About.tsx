@@ -122,15 +122,15 @@ export default function About() {
                 <div className="section-divider mb-16 lg:mb-24" />
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
                     {/* Left column (60%) */}
-                    <div className="lg:col-span-3 space-y-8">
-                        <span className="label-neon">WHO I AM</span>
-                        <h2 ref={headingRef} className="heading-section">
+                    <div className="lg:col-span-3">
+                        <span className="label-neon block mb-4">WHO I AM</span>
+                        <h2 ref={headingRef} className="heading-section mb-8">
                             A Developer Who Builds{" "}
                             <span style={{ color: "var(--color-accent-cyan)" }}>
                                 with Purpose
                             </span>
                         </h2>
-                        <div className="space-y-4 text-text-secondary leading-relaxed">
+                        <div className="space-y-5 text-text-secondary leading-relaxed mb-12">
                             <p className="about-para">
                                 I&apos;m Krishna — a full-stack software engineer who believes
                                 that great software is born from equal parts technical mastery
@@ -146,7 +146,7 @@ export default function About() {
                         </div>
 
                         {/* Stat boxes with neon accent */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                             {stats.map((stat, i) => (
                                 <div
                                     key={stat.label}
@@ -172,7 +172,7 @@ export default function About() {
                             href="/assets/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="about-para btn-neon inline-flex mt-4"
+                            className="about-para btn-neon inline-flex mt-10"
                         >
                             <svg
                                 className="w-4 h-4"

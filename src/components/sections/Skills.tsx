@@ -428,7 +428,6 @@ export default function Skills() {
                     </div>
                 </div>
 
-                {/* ── Category Summary Chips ──────────────────── */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-10">
                     {Object.entries(grouped).map(([category, categorySkills]) => {
                         const color = categoryColors[category] || "#6B6B80";
@@ -457,7 +456,157 @@ export default function Skills() {
                         );
                     })}
                 </div>
+
+                <div className="mt-16">
+                    <h3 className="text-sm font-semibold uppercase tracking-widest text-text-muted mb-6">
+                        Category Mix
+                    </h3>
+                    <CategoryDonutChart
+                        data={Object.entries(grouped).map(([category, list]) => ({
+                            category,
+                            value: list.reduce((sum, s) => sum + proficiencyMap[s.proficiency], 0),
+                        }))}
+                    />
+                </div>
             </div>
         </section>
+    );
+}
+
+function CategoryDonutChart({
+    data,
+}: {
+    data: { category: string; value: number }[];
+}) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const circleRefs = useRef<SVGCircleElement[]>([]);
+    const textRef = useRef<HTMLDivElement>(null);
+    const total = data.reduce((t, d) => t + d.value, 0);
+    const radius = 48;
+    const circumference = 2 * Math.PI * radius;
+    const normalized = data
+        .filter((d) => d.value > 0)
+        .map((d) => ({ ...d, pct: d.value / total }));
+    useEffect(() => {
+        if (!containerRef.current) return;
+        let offset = 0;
+        circleRefs.current.forEach((el, i) => {
+            if (!el) return;
+            const seg = normalized[i]?.pct ? normalized[i].pct * circumference : 0;
+            gsap.set(el, {
+                strokeDasharray: `0 ${circumference}`,
+                strokeDashoffset: -offset,
+            });
+            offset += seg;
+        });
+        const ctx = gsap.context(() => {
+            circleRefs.current.forEach((el, i) => {
+                if (!el) return;
+                const seg = normalized[i]?.pct ? normalized[i].pct * circumference : 0;
+                gsap.to(el, {
+                    strokeDasharray: `${seg} ${circumference}`,
+                    duration: 1.2,
+                    delay: i * 0.08,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 85%",
+                        toggleActions: "play none none none",
+                    },
+                });
+            });
+            if (textRef.current) {
+                gsap.fromTo(
+                    textRef.current,
+                    { opacity: 0, scale: 0.9, y: 8 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: "top 85%",
+                            toggleActions: "play none none none",
+                        },
+                    }
+                );
+            }
+        }, containerRef);
+        return () => ctx.revert();
+    }, [total, circumference, normalized]);
+    return (
+        <div ref={containerRef} className="neon-card p-6 lg:p-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+                <div className="relative">
+                    <svg
+                        className="w-56 h-56 -rotate-90"
+                        viewBox="0 0 120 120"
+                        aria-label="Skills category distribution"
+                    >
+                        <circle
+                            cx="60"
+                            cy="60"
+                            r={radius}
+                            fill="none"
+                            stroke="rgba(255,255,255,0.05)"
+                            strokeWidth="12"
+                        />
+                        {normalized.map((d, i) => (
+                            <circle
+                                key={d.category}
+                                ref={(el) => {
+                                    if (el) circleRefs.current[i] = el;
+                                }}
+                                cx="60"
+                                cy="60"
+                                r={radius}
+                                fill="none"
+                                stroke={categoryColors[d.category] || "#6B6B80"}
+                                strokeWidth="12"
+                                strokeLinecap="butt"
+                                style={{
+                                    filter: `drop-shadow(0 0 8px ${(categoryColors[d.category] || "#6B6B80")}40)`,
+                                }}
+                            />
+                        ))}
+                    </svg>
+                    <div
+                        ref={textRef}
+                        className="absolute inset-0 flex items-center justify-center rotate-90"
+                    >
+                        <div className="text-center">
+                            <div className="text-xs uppercase tracking-widest text-text-muted">
+                                Categories
+                            </div>
+                            <div className="text-2xl font-bold text-text-primary">
+                                {normalized.length}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    {normalized.map((d) => {
+                        const color = categoryColors[d.category] || "#6B6B80";
+                        const pct = Math.round(d.pct * 100);
+                        return (
+                            <div key={d.category} className="flex items-center justify-between glass-card p-4">
+                                <div className="flex items-center gap-3">
+                                    <span
+                                        className="inline-block w-3 h-3 rounded-sm"
+                                        style={{ backgroundColor: color, boxShadow: `0 0 12px ${color}50` }}
+                                    />
+                                    <span className="text-sm font-medium">{d.category}</span>
+                                </div>
+                                <span className="text-sm font-mono" style={{ color }}>
+                                    {pct}%
+                                </span>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
     );
 }
